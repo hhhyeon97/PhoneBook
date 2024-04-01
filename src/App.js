@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Col } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import ContactForm from './component/ContactForm';
 import ContactList from './component/ContactList';
 import ContactItem from './component/ContactItem';
@@ -14,14 +14,16 @@ function App() {
   return (
     <div>
       <h2 className="title">전화번호부</h2>
-      <Container className="area">
-        <Col className="col1">
-          <ContactForm />
-        </Col>
-        <Col className="col2">
-          <ContactList />
-          <ContactItem />
-        </Col>
+      <Container>
+        <Row>
+          <Col>
+            <ContactForm />
+          </Col>
+          <Col>
+            <ContactList />
+            <ContactItem />
+          </Col>
+        </Row>
       </Container>
     </div>
   );
