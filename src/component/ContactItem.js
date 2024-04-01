@@ -11,9 +11,9 @@ const ContactItem = ({ item }) => {
           src={
             item.profileImage
               ? URL.createObjectURL(item.profileImage)
-              : 'https://i.pinimg.com/564x/28/fb/47/28fb47d48d382c0debb7ea6d93dc79ed.jpg'
+              : 'https://i.pinimg.com/236x/28/fb/47/28fb47d48d382c0debb7ea6d93dc79ed.jpg'
           }
-          alt=""
+          alt="기본이미지"
         />
       </Col>
       <Col lg={9} className="text-area">
