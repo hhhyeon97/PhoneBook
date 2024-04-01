@@ -21,7 +21,6 @@ function App() {
           </Col>
           <Col>
             <ContactList />
-            <ContactItem />
           </Col>
         </Row>
       </Container>
