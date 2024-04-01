@@ -1,12 +1,22 @@
 .title {
   text-align: center;
+  font-family: 'Lilita One', sans-serif;
+  margin: 30px auto;
+  font-size: 35px;
 }
 
-.area {
-  display: flex;
+.search-btn {
+  position: relative;
+  top: 6px;
 }
 
-.area .col1,
-.col2 {
-  margin-right: 25px;
+.no-text {
+  margin-top: 10px;
+}
+.profile-img {
+  width: 100px;
+}
+
+.search-area {
+  margin-bottom: 20px;
 }

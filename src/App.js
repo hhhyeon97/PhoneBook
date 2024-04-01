@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Col, Row } from 'react-bootstrap';
@@ -15,7 +14,7 @@ function App() {
       <h2 className="title">PHONE BOOK</h2>
       <Container>
         <Row>
-          <Col>
+          <Col className="border-end">
             <ContactForm />
           </Col>
           <Col>

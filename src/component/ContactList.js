@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from './Search';
 import ContactItem from './ContactItem';
 import { useSelector } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ContactList = () => {
   // useSelector를 사용하여 Redux 상태에서 필요한 속성 가져오기
@@ -26,10 +27,10 @@ const ContactList = () => {
 
   return (
     <div>
-      <Search />
+      <Search className="search-area" />
       {/* 연락처가 없는 경우에는 "연락처가 없습니다." 문구 표시 */}
       {filterList.length === 0 ? (
-        <p>연락처가 없습니다.</p>
+        <p className="no-text">연락처가 없습니다.</p>
       ) : (
         <>
           {filterList.length} 개

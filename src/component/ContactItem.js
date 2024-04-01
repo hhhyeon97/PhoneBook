@@ -7,7 +7,7 @@ const ContactItem = ({ item }) => {
       <Col lg={2}>
         {/* 프로필 이미지를 받아와서 표시 */}
         <img
-          width={90}
+          className="profile-img"
           src={
             item.profileImage
               ? URL.createObjectURL(item.profileImage)
