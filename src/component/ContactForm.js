@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { UseDispatch, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState(0);
+  const [profileImage, setProfileImage] = useState(null); // 파일 상태 추가
   const dispatch = useDispatch();
   //   const getName = (event) => {
   //     //console.log(event.target.value);
   //     setName(event.target.value);
   //   }; // 단순한 기능만 하고 다시 쓰일 일이 없기 때문에 아래에 직접 넣는걸로 대체됨
 
+  // payload에서 보내는 값들이 name:name, phoneNumber:phoneNumber 이런식으로
+  // 이름이 같을 땐 name, phoneNumber로만 입력해도 됨 !!
   const addContact = (event) => {
     event.preventDefault();
     dispatch({
       type: 'ADD_CONTACT',
-      payload: { name, phoneNumber },
+      payload: { name, phoneNumber, profileImage },
     });
   };
-  // payload에서 보내는 값들이 name:name, phoneNumber:phoneNumber 이런식으로
-  // 이름이 같을 땐 name, phoneNumber로만 입력해도 됨 !!
+
+  // 파일 선택 핸들러
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setProfileImage(file);
+  };
+
   return (
     <div>
       <Form onSubmit={addContact}>
@@ -38,6 +46,12 @@ const ContactForm = () => {
             placeholder="전화번호를 입력해주세요"
             onChange={(event) => setPhoneNumber(event.target.value)}
           />
+        </Form.Group>
+
+        {/* 파일 업로드 입력 필드 */}
+        <Form.Group className="mb-3" controlId="formProfileImage">
+          <Form.Label>프로필 사진 선택</Form.Label>
+          <Form.Control type="file" onChange={handleFileChange} />
         </Form.Group>
 
         <Button variant="primary" type="submit">

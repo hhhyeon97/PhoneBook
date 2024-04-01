@@ -14,6 +14,7 @@ function reducer(state = initialState, action) {
           {
             name: payload.name,
             phoneNumber: payload.phoneNumber,
+            profileImage: payload.profileImage,
           },
         ],
       };
