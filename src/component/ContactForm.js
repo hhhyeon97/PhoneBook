@@ -1,46 +1,44 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [profileImage, setProfileImage] = useState(null); // 파일 상태 추가
-  const dispatch = useDispatch();
-  //   const getName = (event) => {
-  //     //console.log(event.target.value);
-  //     setName(event.target.value);
-  //   }; // 단순한 기능만 하고 다시 쓰일 일이 없기 때문에 아래에 직접 넣는걸로 대체됨
 
-  // payload에서 보내는 값들이 name:name, phoneNumber:phoneNumber 이런식으로
-  // 이름이 같을 땐 name, phoneNumber로만 입력해도 됨 !!
+const ContactForm = () => {
+  const formRef = useRef(null); // 폼 참조 생성
+  const dispatch = useDispatch();
+
   const addContact = (event) => {
     event.preventDefault();
+
+    const formData = new FormData(formRef.current); // 폼 데이터 생성
+    const name = formData.get('name');
+    const phoneNumber = formData.get('phoneNumber');
+    const profileImage = formData.get('profileImage');
+
+    // 입력값 검증
+    if (!name.trim() || !phoneNumber.trim()) {
+      // 이름 또는 전화번호가 공백이거나 스페이스만 있는 경우 제출 중단
+      alert('이름과 전화번호를 입력해주세요.'); // 알림 표시
+      return;
+    }
+
     dispatch({
       type: 'ADD_CONTACT',
       payload: { name, phoneNumber, profileImage },
     });
 
-    // 연락처 추가 후 입력값 초기화
-    setName('');
-    setPhoneNumber('');
-    setProfileImage(null);
-  };
-
-  // 파일 선택 핸들러
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setProfileImage(file);
+    // 폼 초기화
+    formRef.current.reset();
   };
 
   return (
     <div>
-      <Form onSubmit={addContact}>
+      <Form ref={formRef} onSubmit={addContact}>
         <Form.Group className="mb-3" controlId="formName">
           <Form.Label>이름</Form.Label>
           <Form.Control
             type="text"
+            name="name"
             placeholder="이름을 입력해주세요"
-            onChange={(event) => setName(event.target.value)}
           />
         </Form.Group>
 
@@ -48,18 +46,17 @@ const ContactForm = () => {
           <Form.Label>전화번호</Form.Label>
           <Form.Control
             type="number"
+            name="phoneNumber"
             placeholder="전화번호를 입력해주세요"
-            onChange={(event) => setPhoneNumber(event.target.value)}
           />
         </Form.Group>
 
-        {/* 파일 업로드 입력 필드 */}
         <Form.Group className="mb-3" controlId="formProfileImage">
           <Form.Label>프로필 사진 선택</Form.Label>
-          <Form.Control type="file" onChange={handleFileChange} />
+          <Form.Control type="file" name="profileImage" />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="dark" type="submit">
           추가
         </Button>
       </Form>

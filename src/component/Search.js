@@ -23,7 +23,9 @@ const Search = () => {
           />
         </Col>
         <Col lg={2}>
-          <Button type="submit">찾기</Button>
+          <Button variant="dark" type="submit">
+            찾기
+          </Button>
         </Col>
       </Row>
     </Form>
