@@ -3,8 +3,8 @@ import { Row, Col } from 'react-bootstrap';
 
 const ContactItem = ({ item }) => {
   return (
-    <Row>
-      <Col lg={2}>
+    <Row className="mt-3 item-area">
+      <Col lg={3}>
         {/* 프로필 이미지를 받아와서 표시 */}
         <img
           className="profile-img"
@@ -16,7 +16,7 @@ const ContactItem = ({ item }) => {
           alt=""
         />
       </Col>
-      <Col lg={10}>
+      <Col lg={9} className="text-area">
         <div>{item.name}</div>
         <div>{item.phoneNumber}</div>
       </Col>

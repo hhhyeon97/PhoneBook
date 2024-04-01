@@ -33,7 +33,7 @@ const ContactList = () => {
         <p className="no-text">연락처가 없습니다.</p>
       ) : (
         <>
-          {filterList.length} 개
+          <strong>{filterList.length}</strong>개의 연락처
           {filterList.map((item, index) => (
             <ContactItem item={item} key={index} />
           ))}

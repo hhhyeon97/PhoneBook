@@ -1,10 +1,12 @@
 .title {
   text-align: center;
   font-family: 'Lilita One', sans-serif;
-  margin: 30px auto;
+  margin: 40px auto;
   font-size: 35px;
 }
-
+.form-area {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .search-btn {
   position: relative;
   top: 6px;
@@ -12,11 +14,20 @@
 
 .no-text {
   margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
 }
 .profile-img {
-  width: 100px;
+  width: 120px;
+  height: 100px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .search-area {
   margin-bottom: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.item-area {
+  font-family: 'Noto Sans KR', sans-serif;
 }

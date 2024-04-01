@@ -31,7 +31,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div>
+    <div className="form-area">
       <Form ref={formRef} onSubmit={addContact}>
         <Form.Group className="mb-3" controlId="formName">
           <Form.Label>이름</Form.Label>
