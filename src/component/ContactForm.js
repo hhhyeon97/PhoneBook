@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [profileImage, setProfileImage] = useState(null); // 파일 상태 추가
   const dispatch = useDispatch();
   //   const getName = (event) => {
@@ -19,6 +19,11 @@ const ContactForm = () => {
       type: 'ADD_CONTACT',
       payload: { name, phoneNumber, profileImage },
     });
+
+    // 연락처 추가 후 입력값 초기화
+    setName('');
+    setPhoneNumber('');
+    setProfileImage(null);
   };
 
   // 파일 선택 핸들러

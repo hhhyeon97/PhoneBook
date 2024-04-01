@@ -27,10 +27,17 @@ const ContactList = () => {
   return (
     <div>
       <Search />
-      {filterList.length} 개
-      {filterList.map((item, index) => (
-        <ContactItem item={item} key={index} />
-      ))}
+      {/* 연락처가 없는 경우에는 "연락처가 없습니다." 문구 표시 */}
+      {filterList.length === 0 ? (
+        <p>연락처가 없습니다.</p>
+      ) : (
+        <>
+          {filterList.length} 개
+          {filterList.map((item, index) => (
+            <ContactItem item={item} key={index} />
+          ))}
+        </>
+      )}
     </div>
   );
 };
