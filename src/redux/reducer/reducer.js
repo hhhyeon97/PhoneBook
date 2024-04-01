@@ -1,5 +1,6 @@
 let initialState = {
   contactList: [],
+  keyword: '',
 };
 
 function reducer(state = initialState, action) {
@@ -16,6 +17,9 @@ function reducer(state = initialState, action) {
           },
         ],
       };
+    case 'SEARCH_BY_NAME':
+      return { ...state, keyword: payload.keyword };
+
     default:
       return { ...state };
   }
