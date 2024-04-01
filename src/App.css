@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+}
+
+.area {
+  display: flex;
+}
+
+.area .col1,
+.col2 {
+  margin-right: 25px;
+}
