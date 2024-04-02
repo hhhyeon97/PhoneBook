@@ -1,15 +1,12 @@
 let initialState = {
   contactList: [],
-  keyword: '',
-  defaultImage:
-    'https://i.pinimg.com/236x/28/fb/47/28fb47d48d382c0debb7ea6d93dc79ed.jpg',
+  filterName: '',
 };
 
 function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case 'ADD_CONTACT':
-      const profileImage = payload.profileImage || state.defaultImage; // payload.profileImage가 없을 경우 기본 이미지로 설정
       return {
         ...state,
         contactList: [
@@ -17,13 +14,12 @@ function reducer(state = initialState, action) {
           {
             name: payload.name,
             phoneNumber: payload.phoneNumber,
-            profileImage: profileImage,
+            uploadImgUrl: payload.uploadImgUrl,
           },
         ],
       };
-    case 'SEARCH_BY_NAME':
-      return { ...state, keyword: payload.keyword };
-
+    case 'SEARCH':
+      return { ...state, filterName: payload.filterName };
     default:
       return { ...state };
   }

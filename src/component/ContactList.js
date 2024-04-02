@@ -1,44 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import Search from './Search';
-import ContactItem from './ContactItem';
+import React, { useEffect, useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ContactItem from './ContactItem';
+import Search from './Search';
 
 const ContactList = () => {
-  // useSelector를 사용하여 Redux 상태에서 필요한 속성 가져오기
   const contactList = useSelector((state) => state.contactList);
-  const keyword = useSelector((state) => state.keyword);
+  const filterName = useSelector((state) => state.filterName);
 
-  // 검색 결과를 관리할 상태 설정
-  const [filterList, setFilterList] = useState([]);
-
+  let [filteredList, setFilteredList] = useState([]);
   useEffect(() => {
-    // 키워드가 비어있지 않은 경우에만 필터링 수행
-    if (keyword !== '') {
-      const filteredList = contactList.filter((item) =>
-        item.name.includes(keyword),
-      );
-      setFilterList(filteredList);
-    } else {
-      // 키워드가 비어있는 경우에는 전체 목록 보여주기
-      setFilterList(contactList);
-    }
-  }, [keyword, contactList]); // useEffect의 의존성 배열 설정
+    if (filterName !== '') {
+      let list = contactList.filter((item) => item.name.includes(filterName));
 
+      setFilteredList(list);
+    } else {
+      setFilteredList(contactList);
+    }
+  }, [filterName, contactList]);
   return (
     <div>
       <Search className="search-area" />
-      {/* 연락처가 없는 경우에는 "연락처가 없습니다." 문구 표시 */}
-      {filterList.length === 0 ? (
-        <p className="no-text">연락처가 없습니다.</p>
-      ) : (
-        <>
-          <strong>{filterList.length}</strong>개의 연락처
-          {filterList.map((item, index) => (
+      <Row className="mt-1">
+        <span className="total-area">
+          <strong>{filteredList.length}</strong>개의 연락처
+        </span>
+      </Row>
+      <Row className="mt-3">
+        {filteredList.map((item, index) => (
+          <Col md={4} sm={6} xs={12} className="card-list">
             <ContactItem item={item} key={index} />
-          ))}
-        </>
-      )}
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 };

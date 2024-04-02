@@ -11,7 +11,7 @@ import ContactList from './component/ContactList';
 function App() {
   return (
     <div>
-      <h2 className="title">PHONE BOOK</h2>
+      <h1 className="title">PHONE BOOK</h1>
       <Container>
         <Row>
           <Col className="border-end">

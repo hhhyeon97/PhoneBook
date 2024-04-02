@@ -1,19 +1,21 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
 
 const ContactItem = ({ item }) => {
-  console.log('Profile Image:', item.profileImage);
+  //console.log('Profile Image:', item.profileImage);
   return (
-    <Row className="mt-3 item-area">
-      <Col lg={3}>
-        {/* 프로필 이미지를 받아와서 표시 */}
-        <img className="profile-img" src={item.profileImage} alt="기본이미지" />
-      </Col>
-      <Col lg={9} className="text-area">
-        <div>{item.name}</div>
-        <div>{item.phoneNumber}</div>
-      </Col>
-    </Row>
+    <div>
+      <div>
+        <img
+          src={item.uploadImgUrl}
+          alt={`${item.name} 프로필 사진`}
+          className="profile-img"
+        />
+      </div>
+      <div className="card-info">
+        <div className="name">{item.name}</div>
+        <div className="phone">{item.phoneNumber}</div>
+      </div>
+    </div>
   );
 };
 

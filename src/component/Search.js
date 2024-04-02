@@ -1,31 +1,30 @@
 import React, { useState } from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 const Search = () => {
-  let [keyword, setKeyword] = useState('');
-  let dispatch = useDispatch();
-  //let { contact } = useSelector((state) => state);
+  const [filterName, setFilterName] = useState('');
+  const dispatch = useDispatch();
 
   const searchByName = (event) => {
     event.preventDefault();
-    dispatch({ type: 'SEARCH_BY_NAME', payload: { keyword } });
+    dispatch({ type: 'SEARCH', payload: { filterName } });
   };
 
   return (
     <Form onSubmit={searchByName} className="search-area">
       <Row>
-        <Col lg={10}>
-          <Form.Label>검색</Form.Label>
+        <Col>
           <Form.Control
             type="text"
-            placeholder="이름을 입력해주세요"
-            onChange={(event) => setKeyword(event.target.value)}
+            placeholder="이름을 입력해 주세요"
+            onChange={(event) => setFilterName(event.target.value)}
+            className="text_field"
           />
         </Col>
-        <Col lg={2} className="mt-4 search-btn">
+        <Col>
           <Button variant="dark" type="submit">
-            찾기
+            검색
           </Button>
         </Col>
       </Row>

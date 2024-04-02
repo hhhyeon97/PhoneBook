@@ -2,14 +2,10 @@
   text-align: center;
   font-family: 'Lilita One', sans-serif;
   margin: 40px auto;
-  font-size: 35px;
+  font-size: 40px;
 }
 .form-area {
   font-family: 'Noto Sans KR', sans-serif;
-}
-.search-btn {
-  position: relative;
-  top: 6px;
 }
 
 .no-text {
@@ -17,17 +13,27 @@
   font-family: 'Noto Sans KR', sans-serif;
   text-align: center;
 }
+
 .profile-img {
   width: 120px;
   height: 100px;
   cursor: pointer;
   margin-right: 10px;
+  border-radius: 5px;
+}
+
+.default-img {
+  width: 150px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .search-area {
-  margin-bottom: 20px;
   font-family: 'Noto Sans KR', sans-serif;
 }
-.item-area {
+.total-area {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.card-list {
   font-family: 'Noto Sans KR', sans-serif;
 }
