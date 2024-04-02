@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 const ContactForm = () => {
   const formRef = useRef(null); // 폼 참조 생성
   const dispatch = useDispatch();
+  //const [uploadImgUrl, setUploadImgUrl] = useState('https://i.pinimg.com/236x/28/fb/47/28fb47d48d382c0debb7ea6d93dc79ed.jpg');
 
   // 전화번호 포맷팅 함수
   const formatPhoneNumber = (phoneNumber) => {
@@ -21,7 +22,12 @@ const ContactForm = () => {
     const formData = new FormData(formRef.current); // 폼 데이터 생성
     const name = formData.get('name');
     const phoneNumber = formatPhoneNumber(formData.get('phoneNumber')); // 전화번호 포맷팅
-    const profileImage = formData.get('profileImage');
+    let profileImage = formData.get('profileImage');
+    // 파일을 선택하지 않았을 경우 기본 이미지로 설정
+    if (!profileImage) {
+      profileImage =
+        'https://i.pinimg.com/236x/28/fb/47/28fb47d48d382c0debb7ea6d93dc79ed.jpg';
+    }
 
     // 입력값 검증
     if (!name.trim() || !phoneNumber.trim()) {
@@ -35,9 +41,7 @@ const ContactForm = () => {
       payload: {
         name,
         phoneNumber,
-        profileImage:
-          profileImage ||
-          'https://i.pinimg.com/236x/28/fb/47/28fb47d48d382c0debb7ea6d93dc79ed.jpg',
+        profileImage,
       },
     });
 
